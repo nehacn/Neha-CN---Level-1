@@ -11,7 +11,7 @@ int sum(int a , int b)
        scanf("%d%d",&a,&b);
       
         //calling the function
-         num3=sum(num1+num2);
+        num3=sum(num1+num2);
         printf("Sum is %d",num3);
-         return 0;
+        return 0;
      }
