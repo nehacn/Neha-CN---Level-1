@@ -12,6 +12,6 @@ int sum(int a , int b)
       
         //calling the function
         num3=sum(num1+num2);
-        printf("Sum is %d",num3);
+        printf("Sum of %d and %d is %d",num1,num2num3);
         return 0;
      }
