@@ -3,7 +3,7 @@
 float input()
 {
   float height;
-  printf("\n Enter a value");
+  printf("\n Enter a value of height,depth,breadth ");
   scanf("%f",&height);
   return height;
 }
@@ -15,15 +15,17 @@ float input()
 }
  void output(float height,float depth,float breadth,float volume)
 {
-  printf("Volume of the Tromboloid with values %f,%f,%f is %f",height,depth,breadth,volume);
+  printf(" Volume of the Tromboloid with values %f,%f,%f is %f",height,depth,breadth,volume);
 }
-  int main()
+   float main()
 {
   float a,b,c,x;
   a=input();
   b=input();
   c=input();
   x=find_volume(a,b,c);
-  output(a,b,c,x);
-  return 0;
+
+ output(a,b,c,x);
+ return 0;
 }
+
