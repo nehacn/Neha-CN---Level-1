@@ -2,17 +2,19 @@
 #include<stdio.h>
 int input()
 {
-   int x;
-   printf("Enter a number");
-   scanf("%d",&x);
-   return x;
+  int X;
+  printf("\n Enter a Number :");
+  scanf("%d",&X);
+  return X;
 }
  int main()
 {
- int a,b,c;
- a=input();
- b=input();
- c=a+b;
- printf(" The sum of %d and %d is %d",a,b,c);
- return 0;
+  int p,q,c;
+  printf("\n Enter a Value for p and q");
+  p=input();
+  q=input();
+  c=p+q;
+  printf("\n Sum of %d and %d is %d",p,q,c);
+  return 0;
 }
+
