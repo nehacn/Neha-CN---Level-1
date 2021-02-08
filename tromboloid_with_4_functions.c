@@ -25,7 +25,6 @@ float input()
    c=input();
    X=find_volume(a,b,c);
  
-Result(a,b,c,X);
-return 0;
-
+  Result(a,b,c,X);
+  return 0;
 }
