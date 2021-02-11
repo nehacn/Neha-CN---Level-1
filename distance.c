@@ -5,30 +5,32 @@
 int input()
 {
   int X;
-  printf("\n Enter a value :");
   scanf("%d",&X);
   return X;
 }
-  int Compute (int x1,int y1,int x2,int y2)
-{
-  float distance;
-  distance=(float)sqrt((pow((x2-x1),2)+pow((y2-y1),2)));
-  printf("%f",distance");
-  return distance;
+  int compute( int x1,int y1, int x2 , int y2)
+{ 
+  float Distance;
+  Distance=(float)sqrt((pow((x2-x1),2)+pow((y2-y1),2)));
+  printf("%f",Distance);
+  return Distance;
 }
- void out (float distance)
-{
-  printf("%f is the distance between 2 points",distance);
+void out( float Distance)
+{ printf("%f is the distance",Distance);
 }
- int main()
-{
-  int p,q,r,s;
-  float distance;
-  p=input();
-  q=input();
-  r=input();
-  s=input();
-  Compute(p,q,r,s);
-  Result(distance);
-  return 0;
-}
+ int main( )
+ { 
+	int a,b,c,d;
+    float Distance;
+    printf("Enter point x1:");
+    a=input();
+    printf("Enter point y1:");
+    b=input();
+    printf("Enter point x2:");
+    c=input();
+    printf("Enter point y2:");
+    d=input();
+    compute(a,b,c,d);
+    out(Distance);
+    return 0;
+ }
