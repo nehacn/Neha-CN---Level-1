@@ -3,7 +3,6 @@
 #include<stdlib.h>
 #include<math.h>
 
-float distance;
 struct points
 {
   float x_cor, y_cor;
@@ -33,7 +32,6 @@ void input()
   void output(float distance)
 {
   printf("\n The difference btw two point A and B is : %f",distance);
-
 }
   int main()
 {
