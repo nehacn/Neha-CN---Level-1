@@ -24,19 +24,21 @@ void input()
   printf("\n Enter the y2:");
   scanf("%f",&b.y_cor);
 }
- void compute()
+ float compute()
 {
+  float distance;
   distance=sqrt((pow((b.x_cor-a.x_cor),2)+pow((b.y_cor-a.y_cor),2)));
+  return distance;
 }
-  void output()
+  void output(float distance)
 {
   printf("\n The difference btw two point A and B is : %f",distance);
 
 }
-int main()
+  int main()
 {
   input();
-  compute();
-  output();
-  return 0;
+  float out=compute();
+  output(out);
+  return 0 ;
 }
