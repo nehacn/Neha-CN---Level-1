@@ -5,7 +5,7 @@
 
 struct points
 {
-  float x_cor, y_cor;
+   float x_cor, y_cor;
 };
 typedef struct points P;
 P a,b;
@@ -25,18 +25,18 @@ void input()
 }
  float compute()
 {
-  float distance;
-  distance=sqrt((pow((b.x_cor-a.x_cor),2)+pow((b.y_cor-a.y_cor),2)));
-  return distance;
+   float distance;
+   distance=sqrt((pow((b.x_cor-a.x_cor),2)+pow((b.y_cor-a.y_cor),2)));
+   return distance;
 }
   void output(float distance)
 {
-  printf("\n The difference btw two point A and B is : %f",distance);
+   printf("\n The distance between x1,y1,x2,y2 is : %f",distance);
 }
   int main()
 {
-  input();
-  float out=compute();
-  output(out);
-  return 0 ;
+   input();
+   float out=compute();
+   output(out);
+   return 0 ;
 }
