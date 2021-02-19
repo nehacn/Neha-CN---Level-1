@@ -11,16 +11,16 @@ typedef struct points P;
 P a,b;
 void input()
 {
-  printf("\n Enter the distance from x and y coordinates of point A");
-  printf("\n Enter the x1:");
+  printf("\n Enter the distance from x and y coordinates of point A : ");
+  printf("\n Enter the x1 = ");
   scanf("%f",&a.x_cor);
-  printf("\n Enter the y1:");
+  printf("\n Enter the y1 = ");
   scanf("%f",&a.y_cor);
   
-  printf("\n Enter the distance from x and y coordinates of point B");
-  printf("\n Enter the x2:");
+  printf("\n Enter the distance from x and y coordinates of point B : ");
+  printf("\n Enter the x2 = ");
   scanf("%f", &b.x_cor);
-  printf("\n Enter the y2:");
+  printf("\n Enter the y2 = ");
   scanf("%f",&b.y_cor);
 }
  float compute()
@@ -31,7 +31,7 @@ void input()
 }
   void output(float distance)
 {
-   printf("\n The distance between x1,y1,x2,y2 is : %f",distance);
+   printf("\n The distance between x1,y1,x2,y2 is = %f",distance);
 }
   int main()
 {
