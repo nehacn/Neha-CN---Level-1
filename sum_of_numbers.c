@@ -3,7 +3,7 @@
 int input()
 {
     int X;
-    printf("Enter the no of elements = ");
+    printf("Enter the no of elements =");
     scanf("%d",&X);
     return X;
 }
@@ -26,7 +26,7 @@ int add(int X,int a[])
 }
 void display(int X,int sum)
 {
-    printf("Sum of %d different numbers is  d",X,sum);
+    printf("Sum of %d different numbers is = %d",X,sum);
 }
 int main()
 {
