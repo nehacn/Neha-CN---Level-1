@@ -4,7 +4,7 @@ int num(int,int,int,int);
 int deno(int,int);
 void sim1(int,int,int,int);
 int main()
-{ 
+{
   struct fr
 {
   int n,d;
@@ -24,7 +24,7 @@ int main()
    int res1;
    res1=(x1*y2) + (x2*y1);
    printf("\n %d is the total sum value of the numerators",res1);
-   return res1; 
+   return res1;
 }
   int deno( int y2,int y1)
 {
@@ -48,5 +48,5 @@ for(i=2;i<=res1 && i<=res2; i++)
 }
   res1=res1/flag;
   res2=res2/flag;
-  printf("\n The simplified version is %d/%d",res1,res2);
+  printf("\n The simplified version of the fraction is %d/%d",res1,res2);
 }
