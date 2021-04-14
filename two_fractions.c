@@ -1,52 +1,48 @@
 //WAP to find the sum of two fractions.
 #include<stdio.h>
-int num(int,int,int,int);
-int deno(int,int);
-void sim1(int,int,int,int);
+typedef struct Fract
+{
+    int num,deno;
+}Fract;
+Fract input()
+{
+    Fract frac;
+    printf("\n Enter the numerator = ");
+    scanf("%d",&frac.num);
+    printf("\n Enter the denominator = ");
+    scanf("%d",&frac.deno);
+    return frac;
+}
+int gcd(int p,int q)
+{
+    while(p!=q)
+    {
+        if(p>q)
+            p=p-q;
+        else
+            q=q-p;
+    }
+}
+Fract Addition(Fract f1,Fract f2)
+{
+    Fract Sum;
+    int X=gcd(f1.deno,f2.deno);
+    Sum.num=((f1.num*f2.deno)+(f2.num*f1.deno))/X,
+    Sum.deno=(f1.deno*f2.deno)/X;
+    return Sum;
+}
+void Output(Fract f1,Fract f2,Fract Sum)
+{
+ printf("\n The addition of (%d/%d) and (%d/%d) is = (%d/%d)",f1.num,f1.deno,f2.num,f2.deno,Sum.num,Sum.deno);
+}
 int main()
 {
-  struct fr
-{
-  int n,d;
- } f1,f2,res;
-   
-   printf("\n Enter two numerators - ");
-   scanf("%d%d",&f1.n,&f2.d);
-   printf("\n Enter two denominators - ");
-   scanf("%d%d",&f1.d,&f2.d);
-   num(f1.n,f2.n,f1.d,f2.d);
-   deno(f1.d,f2.d);
-   sim1(f1.n,f2.n,f1.d,f2.d);
-   return 0;
+    Fract f1,f2,Sum;
+    int gcd;
+    f1=input();
+    f2=input();
+    Sum=Addition(f1,f2);
+    Output(f1,f2,Sum);
+    return 0;
 }
-  int num( int x1, int x2, int y1, int y2)
-{
-   int res1;
-   res1=(x1*y2) + (x2*y1);
-   printf("\n %d is the total sum value of the numerators",res1);
-   return res1;
-}
-  int deno( int y2,int y1)
-{
-  int res2;
-  res2=y2*y1;
-  printf("\n %d is the total sum value of the denominators",res2);
-  return res2;
-}
- void sim1(int x1,int x2,int y1,int y2)
-{
-  int i,flag=1,res1,res2;
-  res1=(x1*y2)+(x2*y1);
-  res2=y1*y2;
 
-for(i=2;i<=res1 && i<=res2; i++)
-{
-   if(res1%i==0 && res2%i==0)
-   {
-      flag=i;
-   }
-}
-  res1=res1/flag;
-  res2=res2/flag;
-  printf("\n The simplified version of the fraction is %d/%d",res1,res2);
-}
