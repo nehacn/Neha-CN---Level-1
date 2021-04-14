@@ -1,0 +1,104 @@
+#include<stdio.h>
+typedef struct
+{
+	int x;
+	int numerator[10];
+	int denominator[10];
+	int final_numerator;
+	int final_denominator;
+}fraction;
+
+int input_x()
+{
+	int x;
+	printf("Enter number of test cases: ");
+	scanf("%d",&x);
+	return x;
+}
+
+fraction input_fraction()
+{
+	fraction fract;
+	printf("Enter the number of fractions: ");
+	scanf("%d",&fract.x);
+	for(int i=0;i<fract.x;i++)
+	{
+	    printf("Enter denominator of the fraction: ");
+	    scanf("%d",&fract.denominator[i]);
+	    fract.numerator[i]=1;
+	}
+	return fract;
+}
+
+void input_x_fraction(int x, fraction fract[x])
+{
+	for(int i=0;i<x;i++)
+	{
+		fract[i] = input_fraction();
+	}
+}
+
+int find_gcd(int m, int n)
+{
+    while (m!=n)
+    {
+       	if (m>n)
+         	m-=n;
+        else
+          	n-=m; 
+    }
+   	return m;
+}
+
+void compute_fraction(fraction *fract)
+{
+	int final_numerator=0,final_denominator=1, gcd;
+	for(int i=0;i<fract->x;i++)
+	{
+		final_denominator *= fract->denominator[i];
+	}
+	for(int i=0;i<fract->x;i++)
+	{
+		final_numerator += (fract->numerator[i]) * (final_denominator/fract->denominator[i]);
+	}
+	gcd = find_gcd(final_numerator, final_denominator);
+    fract->final_numerator = final_numerator/gcd;
+	fract->final_denominator = final_denominator/gcd;
+}
+
+void compute_x_fraction(int x, fraction fract[x])
+{
+	for(int i=0;i<x;i++)
+	{
+		compute_fraction(&fract[i]);
+	}
+}
+
+void output_fraction(int x,fraction fract)
+{
+	for(int i=0;i<fract.x-1;i++)
+	{
+	    printf("%d/%d + ",fract.numerator[i],fract.denominator[i]);
+    }
+    printf("%d/%d = %d/%d\n",fract.numerator[fract.x-1],fract.denominator[fract.x-1],fract.final_numerator,fract.final_denominator);
+}
+
+void output_x_fraction(int x, fraction fract[x])
+{
+	for(int i=0;i<x;i++)
+	{
+		output_fraction(x,fract[i]);
+	}
+}
+
+int main()
+{
+	int x;
+	x=input_x();
+	fraction fract[x];
+	input_x_fraction(x,fract);
+	compute_x_fraction(x,fract);
+	output_x_fraction(x,fract);
+	return 0;
+}
+
