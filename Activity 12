@@ -2,8 +2,8 @@
 typedef struct
 {
 	int x;
-	int numerator[10];
-	int denominator[10];
+	int num[100];
+	int deno[100];
 	int final_numerator;
 	int final_denominator;
 }fraction;
@@ -24,8 +24,8 @@ fraction input_fraction()
 	for(int i=0;i<fract.x;i++)
 	{
 	    printf("Enter denominator of the fraction: ");
-	    scanf("%d",&fract.denominator[i]);
-	    fract.numerator[i]=1;
+	    scanf("%d",&fract.deno[i]);
+	    fract.num[i]=1;
 	}
 	return fract;
 }
@@ -55,11 +55,11 @@ void compute_fraction(fraction *fract)
 	int final_numerator=0,final_denominator=1, gcd;
 	for(int i=0;i<fract->x;i++)
 	{
-		final_denominator *= fract->denominator[i];
+		final_denominator *= fract->deno[i];
 	}
 	for(int i=0;i<fract->x;i++)
 	{
-		final_numerator += (fract->numerator[i]) * (final_denominator/fract->denominator[i]);
+		final_numerator += (fract->num[i]) * (final_denominator/fract->deno[i]);
 	}
 	gcd = find_gcd(final_numerator, final_denominator);
     fract->final_numerator = final_numerator/gcd;
@@ -78,9 +78,9 @@ void output_fraction(int x,fraction fract)
 {
 	for(int i=0;i<fract.x-1;i++)
 	{
-	    printf("%d/%d + ",fract.numerator[i],fract.denominator[i]);
+	    printf("%d/%d + ",fract.num[i],fract.deno[i]);
     }
-    printf("%d/%d = %d/%d\n",fract.numerator[fract.x-1],fract.denominator[fract.x-1],fract.final_numerator,fract.final_denominator);
+    printf("%d/%d = %d/%d\n",fract.num[fract.x-1],fract.deno[fract.x-1],fract.final_numerator,fract.final_denominator);
 }
 
 void output_x_fraction(int x, fraction fract[x])
