@@ -1,0 +1,141 @@
+#include<stdio.h>
+
+typedef struct
+{
+	char student_name[10];
+	int scores[10];
+      char grade;
+      float average_score;
+}student;
+
+typedef struct
+{
+	char course_names[10];
+	int no_students;
+      float weights[10];
+      int no_weights;
+      student std[10];
+}gradebook;
+
+int input_x()
+{
+    int x;
+	printf("\n Enter the number of cases = ");
+	scanf("%d",&x);
+	return x;
+}
+
+student input_student(int no_weights)
+{
+	student s;
+	printf("\n Enter the student name = ");
+	scanf("%s", &s.student_name);
+	printf("\n Enter the scores of the student = ");
+	for(int i=0;i<no_weights;i++)
+	{
+		scanf("%d",&s.scores[i]);
+	}
+	return s;
+}
+
+gradebook input_gradebook()
+{
+	gradebook GB;
+	printf("\n Enter the course name: ");
+	scanf("%s", &GB.course_names);
+	printf("\n Enter the number of students and no of weights: ");
+	scanf("%d%d", &GB.no_students, &GB.no_weights);
+	printf("\n Enter the value of weights: ");
+	for(int i=0;i<GB.no_weights;i++)
+	{
+		scanf("%f",&GB.weights[i]);
+	}
+	for(int i=0;i<GB.no_students;i++)
+	{
+		GB.std[i] = input_student(GB.no_weights);
+	}
+	return GB;
+}
+
+void input_x_gradebook(int x, gradebook GB[x])
+{
+	for(int i=0;i<x;i++)
+	{
+		GB[i] = input_gradebook();
+	}
+}
+
+char compute_grade(float marks)
+{
+	char grade;
+	if(marks>=0 && marks<60)
+		printf("\n Grade = 'F'");
+	else if(marks>=60 && marks<70)
+		printf("\n Grade = 'D'");
+	else if(marks>=70 && marks<80)
+		printf("\n Grade = 'C'");
+      else if(marks>=80 && marks<90)
+		printf("\n Grade = 'B'");
+      else if(marks>=90 && marks<=100)
+		printf("\n Grade = 'A'");
+	return grade;
+}
+
+void compute_students(student *std, gradebook GB)
+{
+	float total_weights,total_score;
+	for(int i=0;i<GB.no_weights;i++)
+	{
+		total_weights += GB.weights[i];
+	}
+	for(int i=0;i<GB.no_weights;i++)
+	{
+		total_score += std->scores[i]*GB.weights[i];
+	}
+	std->average_score = total_score/total_weights;
+	std->grade = compute_grade(std->average_score);
+}
+
+void compute_gradebook(gradebook *GB)
+{
+    for(int i=0;i<GB->no_students;i++)
+    {
+        compute_students(&GB->std[i],*GB);
+    }
+}
+
+void compute_x_gradebook(int x, gradebook GB[x])
+{
+	for(int i=0;i<x;i++)
+	{
+		compute_gradebook(&GB[i]);
+	}
+}
+
+void output_gradebook(gradebook GB)
+{
+	for(int i=0;i<GB.no_students;i++)
+	{
+		printf("\n%s \t %.2f %c",GB.std[i].student_name,GB.std[i].average_score,GB.std[i].grade);
+	}
+}
+
+void output_x_gradebook(int x, gradebook GB[x])
+{
+	for(int i=0;i<x;i++)
+	{
+	    printf("\n%s",GB[i].course_names);
+		output_gradebook(GB[i]);
+	}
+}
+
+int main()
+{
+	int x;
+	x = input_x();
+	gradebook GB[x];
+	input_x_gradebook(x,GB);
+	compute_x_gradebook(x,GB);
+	output_x_gradebook(x,GB);
+	return 0;
+}
